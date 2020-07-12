@@ -8,5 +8,15 @@ def home_page(request):
     return render(request, 'movies/movies_stuff.html', stuff_for_frontend)
 
 def create(request):
+    if request.method == 'POST':
+        try:
+            response = Movie.objects.create(
+                name=request.POST.get('name'),
+                picture=request.POST.get('picture'),
+                rating=int(request.POST.get('rating')),
+                notes=request.POST.get('notes')
+            )
+        except Exception as e:
+            print(e)
 
     return redirect('/')
