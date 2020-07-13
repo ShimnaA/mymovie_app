@@ -20,3 +20,17 @@ def create(request):
             print(e)
 
     return redirect('/')
+
+def edit(request,movie_id):
+    if request.method == 'POST':
+        try:
+            movie= Movie.objects.get(id=movie_id)
+            movie.name = request.POST.get('name')
+            movie.picture = request.POST.get('picture')
+            movie.rating = int(request.POST.get('rating'))
+            movie.notes = request.POST.get('notes')
+            movie.save()
+
+        except Exception as e:
+            print(e)
+        return redirect('/')

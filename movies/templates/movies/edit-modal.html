@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-content">
-                <form action="#" method="post">
+                <form action="{% url 'edit'  movie_id=movie.id %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="editName">Name</label>
