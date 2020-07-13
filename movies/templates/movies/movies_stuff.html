@@ -29,8 +29,13 @@
                         </div>
 
                         <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-create">Create</button>
-
+                        </div>
                     </div>
+                    </nav>
+
+            <section class="result">
+            	<div class="container">
+
                     {% if messages %}
                         {% for message in messages %}
                             <div class="alert alert-{{message.tags}}">
@@ -39,8 +44,8 @@
                             </div>
                         {% endfor %}
                     {% endif %}
-    			</div>
-    		</nav>
+
+
 
             <div class="movies">
                     {% for movie in search_result %}
@@ -57,6 +62,8 @@
                         {% include "movies/edit-modal.html" %}
                     {% endfor %}
                 </div>
+                </div>
+            </section>
 </div>
         {% include "movies/create-modal.html" %}
 
