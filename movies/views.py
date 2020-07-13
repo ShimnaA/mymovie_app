@@ -24,13 +24,24 @@ def create(request):
 def edit(request,movie_id):
     if request.method == 'POST':
         try:
-            movie= Movie.objects.get(id=movie_id)
-            movie.name = request.POST.get('name')
-            movie.picture = request.POST.get('picture')
-            movie.rating = int(request.POST.get('rating'))
-            movie.notes = request.POST.get('notes')
-            movie.save()
+            movie_obj= Movie.objects.get(id=movie_id)
+            movie_obj.name = request.POST.get('name')
+            movie_obj.picture = request.POST.get('picture')
+            movie_obj.rating = int(request.POST.get('rating'))
+            movie_obj.notes = request.POST.get('notes')
+            movie_obj.save()
 
         except Exception as e:
             print(e)
-        return redirect('/')
+    return redirect('/')
+
+def delete(request, movie_id):
+    try:
+
+        movie_obj = Movie.objects.get(id=movie_id)
+        movie_obj.delete()
+        print("movie deleted")
+    except Exception as e:
+        print(e)
+
+    return redirect('/')
